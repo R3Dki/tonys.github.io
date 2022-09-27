@@ -1,6 +1,6 @@
 //Config
 const elementId = 'background';
-const nNodes = 40;
+const nNodes = Math.floor(window.innerHeight/240)*10;
 const minAcceleration = -1.8;
 const baseAcceleration = 1.0;
 const maxAcceleration = 1.6;
@@ -8,14 +8,17 @@ const maxAcceleration = 1.6;
 let nodeLineDist = 40;
 const lineWidth = 1;
 const lineColor = 'green';
-const nodeRadius = 6;
 const nodeColor = '#BF0000';
 const nodeAlpha = 1;
 const opacityDivisionFactor = 500;
-
-
+const minRad = 3
+const maxRad = 7
 
 //Code
+let maxY = window.innerHeight;
+let maxX = window.innerWidth;
+document.getElementById(elementId).setAttribute('widht', maxX)
+document.getElementById(elementId).setAttribute('height', maxY)
 const canvas = document.getElementById(elementId);
 const ctx = canvas.getContext('2d');
 let nodeList = [];
@@ -33,6 +36,7 @@ Renderer();
 function Node() {
     this.x = Math.floor(Math.random() * (maxX - min + 1) + min);
     this.y = Math.floor(Math.random() * (maxY - min + 1) + min);
+    this.radius = Math.floor(Math.random() * (maxRad - minRad + 1) + minRad);
     this.accelerationX = Math.floor(Math.random() * (maxAcceleration - minAcceleration + 1) + minAcceleration);
     this.accelerationY = Math.floor(Math.random() * (maxAcceleration - minAcceleration + 1) + minAcceleration);
     if (this.accelerationX < baseAcceleration && this.accelerationX > -baseAcceleration) {this.accelerationX = baseAcceleration}
@@ -40,8 +44,6 @@ function Node() {
 }
 
 function Begin() {
-    maxY = document.getElementById(elementId).getAttribute('height');
-    maxX = document.getElementById(elementId).getAttribute('width');
     while (nNodes != nodeList.length) {
         nodeList.push(new Node());
         nodeCount = nodeList.length;
@@ -74,7 +76,7 @@ function Renderer() {
         //Draw Circles were nodes are
         ctx.globalAlpha=nodeAlpha;
         ctx.moveTo(nodeList[i].x, nodeList[i].y);
-        ctx.arc(nodeList[i].x, nodeList[i].y, nodeRadius, 0, 6.28318531);
+        ctx.arc(nodeList[i].x, nodeList[i].y, nodeList[i].radius, 0, 6.28318531);
         ctx.fill();
     }
     requestAnimationFrame(Renderer);
