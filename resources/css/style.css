@@ -4,6 +4,8 @@
 
 body {
     padding-top: 70px;
+    padding-right: 0%;
+    padding-left:0%;
     background-color: rgb(15, 15, 15);
     color: #FF0000;
 }
@@ -15,10 +17,8 @@ center {
 
 #background {
     position: absolute;
-    top: 0%;
     left: 0%;
-    height: 100%;
-    width: 100%;
+    top: 0%;
 }
 
 .topbar {
@@ -32,10 +32,10 @@ center {
     border-bottom-style: solid;
     background-image: linear-gradient(
         135deg, hsl(0deg 0% 0%) 0%, hsl(240deg 70% 43%) 40%, hsl(282deg 50% 50%) 50%, hsl(308deg 50% 50%) 65%, hsl(0deg 109% 45%) 100%);
-}
-
+    }
+    
 .name {
-    margin: -18px;
+    margin-bottom: -18px;
     font-family: 'Fira Code Retina';
     font-size: 100px;
     font-display: 100px;
