@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Fira Code Retina';
+    src: url('/fonts/Fira Code Retina.ttf');
+}
+
 :root {
     --font-size: 50px;
 }
