@@ -9,7 +9,7 @@
     ],
     "Nodes":[
         {"enableNodes":true},
-        {"nNodes":300},
+        {"nNodes":50},
         {"nodeColor":"#BF0000"},
         {"nodeAlpha":1},
         {"minRad":3},
