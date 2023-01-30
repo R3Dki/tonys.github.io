@@ -1,0 +1,34 @@
+{
+    "General":[
+        {"elementId":"background"},
+        {"minAcceleration":-1.8},
+        {"baseAcceleration":1.0},
+        {"maxAcceleration":1.6},
+        {"showWatermark":true},
+        {"randomColorList":["red", "blue", "green", "yellow", "cyan", "purple", "pink", "white", "lime", "aqua", "silver", "gray", "brown"]}
+    ],
+    "Nodes":[
+        {"enableNodes":true},
+        {"nNodes":300},
+        {"nodeColor":"#BF0000"},
+        {"nodeAlpha":1},
+        {"minRad":3},
+        {"maxRad":6},
+        {"randomColorNodesMode":true},
+        {"randomColorNodesIterations":"200"},
+        {"pulsatingNodeSize":false},
+        {"minPulseSize":1},
+        {"maxPulseSize":5}
+    ],
+    "Drawer":[
+        {"enableDrawer":true},
+        {"useExperimentalLineDrawer":true},
+        {"polygonDrawer":false},
+        {"nodeLineDist":200},
+        {"lineWidth":1}, 
+        {"opacityDivisionFactor":100},
+        {"lineColor":"green"},
+        {"randomColorLinesMode":false},
+        {"randomColorLinesIterations":200}
+    ]
+}
