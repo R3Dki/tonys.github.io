@@ -11,7 +11,7 @@ body {
     padding-top: 70px;
     padding-right: 0%;
     padding-left:0%;
-    background-color: rgb(15, 15, 15);
+    background-color: rgb(12, 12, 12);
     color: #FF0000;
 }
 
@@ -28,7 +28,7 @@ center {
     left: 0%;
 }
 
-.topbar {
+#topbar {
     position: absolute;
     top: 0%;
     left: 0%;
@@ -38,9 +38,23 @@ center {
     border-color: #FF0000;
     border-bottom-style: solid;
     background-image: linear-gradient(
-        135deg, hsl(0deg 0% 0%) 0%, hsl(240deg 70% 43%) 40%, hsl(282deg 50% 50%) 50%, hsl(308deg 50% 50%) 65%, hsl(0deg 109% 45%) 100%);
-    }
-    
+        135deg, 
+        hsl(0deg 0% 0%) 0%,
+        hsl(0deg 100% 45%) 20%,
+        hsl(314deg 100% 50%) 40%,
+        hsl(286deg 100% 50%) 60%,
+        hsl(240, 100%, 45%) 80%,
+        hsl(0deg 0% 0%) 100%
+    );
+    animation: topbarAnimation 5s ease infinite;
+}
+
+@keyframes topbarAnimation { 
+    0%{background-position:0% 0%}
+    50%{background-position:50% 0%}
+    100%{background-position:100% 0%}
+}
+
 .name {
     margin-bottom: -18px;
     font-family: 'Fira Code Retina';
