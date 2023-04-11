@@ -65,7 +65,7 @@ function show(n) {
     if (
             n < 1 || n > nmax) {
             document.getElementById('shownQuestionMod').value = 1;
-            return;
+        return;
         }
  document.getElementById('d'+n).style.display = 'block';
  }
@@ -133,6 +133,7 @@ function resetScore(){
 
 function updateScore(){
     document.getElementById('scoreindicator').innerHTML = 'Current Score: ' + tot_test;
+    document.getElementById('scoreSetMod').value = tot_score;
 }
 
 document.body.onmousemove = function() {
