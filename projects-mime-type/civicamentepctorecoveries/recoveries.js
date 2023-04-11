@@ -7,6 +7,8 @@ document.title = "CivicaMente Recoveries by R3Dki";
     let shown = true, mouseDown = false;
     document.getElementById("menuOptions").hidden = shown;
     document.getElementById("selectedQuestionMod").value = 1;
+document.getElementById("shownQuestionMod").value = 1;
+document.getElementById("hiddenQuestionMod").value = 1;
     let mouse_position = {x: 0, y: 0};
 
 window.addEventListener('mousemove', (mouse_event) => {
