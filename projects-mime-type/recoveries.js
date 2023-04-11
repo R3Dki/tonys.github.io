@@ -36,16 +36,16 @@ return Math.floor(Math.random() * (max - min) + min);
         document.getElementById("menuOptions").hidden = shown;
     }
 
-    function goto() {
+    function goto(n) {
         if (
-            document.getElementById("selectedQuestionMod").value < 1 || document.getElementById("selectedQuestionMod").value > nmax) {
-            document.getElementById("selectedQuestionMod").value = 1;
+            n < 1 || n > nmax) {
+            n = 1;
             return;
         }
         for(i=1; i<=nmax; i++){
                     document.getElementById('d'+i).style.display = 'none';
         }
-        document.getElementById('d'+document.getElementById("selectedQuestionMod").value) = 'block';
+        document.getElementById('d'+n) = 'block';
     }
 
     function complete(score) {
