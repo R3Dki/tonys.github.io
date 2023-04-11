@@ -158,7 +158,7 @@ document.body.onmousemove = function() {
 }
 
 next = function(nr) {
-if (!nextFunctionOverride){
+if (nextFunctionOverride){
 console.log("Next Override enabled: form attempted to go to the next question of N°"+nr);
 }else{
 console.log("Next Override disabled: form moved to the next question of N°"+nr);
