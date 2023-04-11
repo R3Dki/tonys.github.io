@@ -4,7 +4,7 @@ document.title = "CivicaMente Recoveries by R3Dki";
     document.getElementById("d1-a").checked = false;
     document.getElementById('d1').style.display = 'block';
     document.getElementById('d2').style.display = 'none';
-    let shown = true, mouseDown = false;
+    let shown = true, mouseDown = false, nextFunctionOverride = false;
     document.getElementById("menuOptions").hidden = shown;
 document.getElementById("scoreSetMod").value = 0;
     document.getElementById("selectedQuestionMod").value = 1;
@@ -137,9 +137,84 @@ function resetScore(){
 
 function updateScore(){
     document.getElementById('scoreindicator').innerHTML = 'Current Score: ' + tot_test;
-    document.getElementById('scoreSetMod').value = tot_score;
+    document.getElementById('scoreSetMod').value = tot_test;
+}
+
+function updateNextOverride(){
+if (nextFunctionOverride){
+    document.getElementById('overridebutton').innerHTML = "Override Next Function | State: ON";
+}else{
+document.getElementById('overridebutton').innerHTML = "Override Next Function | State: OFF";
+}
+}
+
+function overrideNext(){
+nextFunctionOverride = !nextFunctionOverride;
+    updateNextOverride();
 }
 
 document.body.onmousemove = function() {
     updateScore();
+}
+
+next = function(nr) {
+if (!nextFunctionOverride){
+console.log("Next Override enabled: form attempted to go to the next question of N°"+nr);
+}else{
+console.log("Next Override disabled: form moved to the next question of N°"+nr);
+if(document.getElementById('d'+nr+'-a').checked == true){
+							tot_test += parseInt(document.getElementById('d'+nr+'-a').value);
+						}
+						if(document.getElementById('d'+nr+'-b').checked == true){
+							tot_test += parseInt(document.getElementById('d'+nr+'-b').value);
+						}
+						if(document.getElementById('d'+nr+'-c').checked == true){
+							tot_test += parseInt(document.getElementById('d'+nr+'-c').value);
+						}
+						if(document.getElementById('d'+nr+'-d').checked == true){
+							tot_test += parseInt(document.getElementById('d'+nr+'-d').value);
+						}
+						
+						//-----------------------------------------------
+						soglia_min = parseInt('8');
+						nmax = parseInt('10');
+						//-----------------------------------------------
+						
+						for(i=1; i<=nmax; i++){
+							document.getElementById('d'+i).style.display = 'none';
+							if(document.getElementById('d-audio'+i)){
+								document.getElementById('d-audio'+i).pause();
+							}
+						}
+																			
+						nr_succ = parseInt(nr) + 1;
+						if(nr_succ == nmax+1)
+						{
+														
+								if(tot_test == nmax || (soglia_min > 0 && tot_test >= soglia_min)){
+									document.getElementById('loader').style.display='block';
+									document.getElementById('form-s').submit();
+								}else{
+									if(soglia_min > 0){
+																					alert('Hai risposto correttamente solo a '+tot_test+' domande su '+nmax+'.\nPer proseguire devi rispondere correttamente ad almeno '+soglia_min+' domande. Riprova');
+																			}else{
+																					alert('Hai risposto correttamente solo a '+tot_test+' domande su '+nmax+'.\nPer proseguire devi rispondere correttamente a tutte le domande. Riprova');	
+																			}
+									tot_test = 0;
+									for(i=1; i<=nmax; i++){
+										document.getElementById('d'+i+'-a').checked = false;
+										document.getElementById('d'+i+'-b').checked = false;
+										document.getElementById('d'+i+'-c').checked = false;
+										document.getElementById('d'+i+'-d').checked = false;
+									}
+									document.getElementById('d1').style.display = 'block';
+									document.getElementById('d'+nmax).style.display = 'none';
+								}
+								
+													}
+						else
+						{
+							document.getElementById('d'+nr_succ).style.display = 'block';
+						}
+}
 }
