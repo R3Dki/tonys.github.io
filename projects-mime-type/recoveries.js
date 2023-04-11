@@ -35,7 +35,12 @@ return Math.floor(Math.random() * (max - min) + min);
         shown = !shown;
         document.getElementById("menuOptions").hidden = shown;
     }
-
+ function hide(n) {
+ document.getElementById('d'+n).style.display = 'none';
+ }
+function show(n) {
+ document.getElementById('d'+n).style.display = 'block';
+ }
     function goto(n) {
         if (
             n < 1 || n > nmax) {
@@ -43,9 +48,9 @@ return Math.floor(Math.random() * (max - min) + min);
             return;
         }
         for(i=1; i<=nmax; i++){
-                    document.getElementById('d'+i).style.display = 'none';
+                    hide(i);
         }
-        document.getElementById('d'+n) = 'block';
+        show(n);
     }
 
     function complete(score) {
