@@ -6,6 +6,7 @@ document.title = "CivicaMente Recoveries by R3Dki";
     document.getElementById('d2').style.display = 'none';
     let shown = true, mouseDown = false;
     document.getElementById("menuOptions").hidden = shown;
+document.getElementById("scoreSetMod").value = 0;
     document.getElementById("selectedQuestionMod").value = 1;
 document.getElementById("shownQuestionMod").value = 1;
 document.getElementById("hiddenQuestionMod").value = 1;
@@ -121,14 +122,17 @@ function resetTest() {
     uncheckAllAnswers();
     tot_test = 0;
     goto(1);
+    updateScore();
 }
 
 function setScore(score){
 tot_test = score;
+    updateScore();
 }
 
 function resetScore(){
     tot_test = 0;
+    updateScore();
 }
 
 function updateScore(){
