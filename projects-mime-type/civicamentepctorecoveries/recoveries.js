@@ -35,10 +35,34 @@ return Math.floor(Math.random() * (max - min) + min);
         shown = !shown;
         document.getElementById("menuOptions").hidden = shown;
     }
+function getValue(v) {
+switch (v) {
+    case 1:
+        return document.getElementById('selectedQuestionMod').value;
+        break;
+    case 2:
+        return document.getElementById('shownQuestionMod').value;
+        break;
+    case 3:
+        return document.getElementById('hiddenQuestionMod').value;
+        break;
+}
+}
+
  function hide(n) {
+     if (
+            n < 1 || n > nmax) {
+            n = 1;
+            return;
+        }
  document.getElementById('d'+n).style.display = 'none';
  }
 function show(n) {
+    if (
+            n < 1 || n > nmax) {
+            n = 1;
+            return;
+        }
  document.getElementById('d'+n).style.display = 'block';
  }
     function goto(n) {
