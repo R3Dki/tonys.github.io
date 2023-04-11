@@ -11,7 +11,7 @@ document.getElementById("scoreSetMod").value = 0;
 document.getElementById("shownQuestionMod").value = 1;
 document.getElementById("hiddenQuestionMod").value = 1;
     let mouse_position = {x: 0, y: 0};
-
+document.getElementById('overridebutton').innerHTML = "Override Next Function | State: OFF";
 window.addEventListener('mousemove', (mouse_event) => {
 mouse_position.x = mouse_event.clientX;
 mouse_position.y = mouse_event.clientY;
