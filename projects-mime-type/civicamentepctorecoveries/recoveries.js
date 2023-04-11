@@ -48,13 +48,15 @@ switch (v) {
     case 3:
         return document.getElementById('hiddenQuestionMod').value;
         break;
+    case 4:
+        return document.getElementById('scoreSetMod').value;
 }
 }
 
  function hide(n) {
      if (
             n < 1 || n > nmax) {
-            getValue(3) = 1;
+            document.getElementById('hiddenQuestionMod').value = 1;
             return;
         }
  document.getElementById('d'+n).style.display = 'none';
@@ -62,7 +64,7 @@ switch (v) {
 function show(n) {
     if (
             n < 1 || n > nmax) {
-            getValue(2) = 1;
+            document.getElementById('shownQuestionMod').value = 1;
             return;
         }
  document.getElementById('d'+n).style.display = 'block';
@@ -70,7 +72,7 @@ function show(n) {
     function goto(n) {
         if (
             n < 1 || n > nmax) {
-            getValue(1) = 1;
+            document.getElementById('hiddenQuestionMod').value = 1;
             return;
         }
         for(i=1; i<=nmax; i++){
@@ -84,3 +86,55 @@ function show(n) {
         document.getElementById("d"+ nmax +"-a").checked = true;
         next(nmax);
     }
+
+function showAll() {
+    for(i=1; i<=nmax; i++){
+                    show(i);
+        }
+}
+
+function hideAll() {
+for(i=1; i<=nmax; i++){
+                    hide(i);
+        }
+}
+
+function uncheckAllAnswers(){
+    for(i=1; i<=nmax; i++){
+        document.getElementById("d"+i+"-a").checked = false;
+        document.getElementById("d"+i+"-b").checked = false;
+        document.getElementById("d"+i+"-c").checked = false;
+        document.getElementById("d"+i+"-d").checked = false;
+        }
+}
+
+function checkAllAnswers(){
+    for(i=1; i<=nmax; i++){
+        document.getElementById("d"+i+"-a").checked = true;
+        document.getElementById("d"+i+"-b").checked = true;
+        document.getElementById("d"+i+"-c").checked = true;
+        document.getElementById("d"+i+"-d").checked = true;
+        }
+}
+
+function resetTest() {
+    uncheckAllAnswers();
+    tot_test = 0;
+    goto(1);
+}
+
+function setScore(score){
+tot_test = score;
+}
+
+function resetScore(){
+    tot_test = 0;
+}
+
+function updateScore(){
+    document.getElementById('scoreindicator').innerHTML = 'Current Score: ' + tot_test;
+}
+
+document.body.onmousemove = function() {
+    updateScore();
+}
