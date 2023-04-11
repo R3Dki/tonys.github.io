@@ -54,7 +54,7 @@ switch (v) {
  function hide(n) {
      if (
             n < 1 || n > nmax) {
-            n = 1;
+            getValue(3) = 1;
             return;
         }
  document.getElementById('d'+n).style.display = 'none';
@@ -62,7 +62,7 @@ switch (v) {
 function show(n) {
     if (
             n < 1 || n > nmax) {
-            n = 1;
+            getValue(2) = 1;
             return;
         }
  document.getElementById('d'+n).style.display = 'block';
@@ -70,7 +70,7 @@ function show(n) {
     function goto(n) {
         if (
             n < 1 || n > nmax) {
-            n = 1;
+            getValue(1) = 1;
             return;
         }
         for(i=1; i<=nmax; i++){
