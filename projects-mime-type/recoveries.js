@@ -2,8 +2,8 @@ document.title = "CivicaMente Recoveries by R3Dki";
     document.getElementById("d1-a").checked = true;
     next('1');
     document.getElementById("d1-a").checked = false;
-    document.getElementById('d0').style.display = 'block';
-    document.getElementById('d1').style.display = 'none';
+    document.getElementById('d1').style.display = 'block';
+    document.getElementById('d2').style.display = 'none';
     let shown = true, mouseDown = false;
     document.getElementById("menuOptions").hidden = shown;
     document.getElementById("selectedQuestionMod").value = 0;
@@ -38,8 +38,8 @@ return Math.floor(Math.random() * (max - min) + min);
 
     function goto() {
         if (
-            document.getElementById("selectedQuestionMod").value < 0 || document.getElementById("selectedQuestionMod").value > nmax) {
-            document.getElementById("selectedQuestionMod").value = 0;
+            document.getElementById("selectedQuestionMod").value < 1 || document.getElementById("selectedQuestionMod").value > nmax) {
+            document.getElementById("selectedQuestionMod").value = 1;
             return;
         }
         for(i=1; i<=nmax; i++){
@@ -50,6 +50,6 @@ return Math.floor(Math.random() * (max - min) + min);
 
     function complete(score) {
         tot_test = score;
-        document.getElementById("d"+ nmax-1 +"-a").checked = true;
+        document.getElementById("d"+ nmax +"-a").checked = true;
         next(nmax);
     }
