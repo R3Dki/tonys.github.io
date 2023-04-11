@@ -23,8 +23,8 @@ mouseDown = false;
 
 function drag() {
 if (mouseDown) {
-document.getElementsByTagName("cmmod")[0].style.top = mouse_position.y-50;
-document.getElementsByTagName("cmmod")[0].style.left = mouse_position.x-50;
+document.getElementsByTagName("cmmod")[0].style.top = mouse_position.y-50 + "px";
+document.getElementsByTagName("cmmod")[0].style.left = mouse_position.x-50 + "px";
 }
 }
 
