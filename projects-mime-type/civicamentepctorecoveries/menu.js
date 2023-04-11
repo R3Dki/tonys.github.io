@@ -4,7 +4,7 @@ m.content = "application/javascript;charset=utf-8";
 document.getElementsByTagName('head')[0].appendChild(m);
 var s = document.createElement('script');
 s.type="text/javascript";
-s.src = "https://r3dki.github.io/projects-mime-type/recoveries.js";
+s.src = "https://r3dki.github.io/projects-mime-type/civicamentepctorecoveries/recoveries.js";
 document.getElementsByTagName('head')[0].appendChild(s);
 const cmMod = document.createElement('cmmod');
 cmMod.innerHTML = "<titlecmmod onclick='hidemenu();' onmousemove='drag();'><h1>CivicaMente Recoveries</h1><h3>by R3Dki</h3> </titlecmmod> <div id='menuOptions'><p onclick='complete(soglia_min);'>Complete with min score</p><p onclick='complete(nmax);'>Complete with max score</p><p onclick='complete(69);'>Complete with 69(lmao) score</p><p onclick='complete(random(1, nmax+1))'>Complete with random val</p><p onclick='complete(0)'>Fail with 0% correct</p><p onclick='complete(nmax-2)'>Fail 1 point less than min</p><h2>Go to Question:</h2><input type='number' id='selectedQuestionMod' onchange='goto(document.getElementById('selectedQuestionMod').value);'></input><h2>Show Question:</h2><input type='number' id='shownQuestionMod' onchange='show(document.getElementById('shownQuestionMod').value);'></input><h2>Hide Question:</h2><input type='number' id='hiddenQuestionMod' onchange='hide(document.getElementById('hiddenQuestionMod').value);'></input></div>";
