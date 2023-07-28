@@ -130,6 +130,50 @@ tot_test = score;
     updateScore();
 }
 
+let answers_shown = false, generated_indicators = 0;
+function show_answer() {
+    answers_shown = !answers_shown;
+    if (answers_shown) {
+        document.getElementById("show_answer_btn").innerHTML = "Show Answers | State: ON";
+        generated_indicators = 0
+        for(i=1; i<=nmax; i++){
+            if (document.getElementById("d"+i+"-a").innerHTML >= 1) {
+                var correct_answer_element = document.createElement("p");
+                correct_answer_element.innerHTML = "⮙ Correct Answer";
+                correct_answer_element.id = "correct_answer_indicator";
+                document.getElementById("d"+i+"-a").parentElement.appendChild(correct_answer_element);
+                generated_indicators++;
+            };
+            if (document.getElementById("d"+i+"-b").innerHTML >= 1) {
+                var correct_answer_element = document.createElement("p");
+                correct_answer_element.innerHTML = "⮙ Correct Answer";
+                correct_answer_element.id = "correct_answer_indicator";
+                document.getElementById("d"+i+"-b").parentElement.appendChild(correct_answer_element);
+                generated_indicators++;
+            };
+            if (document.getElementById("d"+i+"-c").innerHTML >= 1) {
+                var correct_answer_element = document.createElement("p");
+                correct_answer_element.innerHTML = "⮙ Correct Answer";
+                correct_answer_element.id = "correct_answer_indicator";
+                document.getElementById("d"+i+"-c").parentElement.appendChild(correct_answer_element);
+                generated_indicators++;
+            };
+            if (document.getElementById("d"+i+"-d").innerHTML >= 1) {
+                var correct_answer_element = document.createElement("p");
+                correct_answer_element.innerHTML = "⮙ Correct Answer";
+                correct_answer_element.id = "correct_answer_indicator";
+                document.getElementById("d"+i+"-d").parentElement.appendChild(correct_answer_element);
+                generated_indicators++;
+            };
+        }
+    } else {
+        for (let i = generated_indicators; i > 0; i--) {
+            document.getElementById("correct_answer_indicator").remove();
+        }
+        document.getElementById("show_answer_btn").innerHTML = "Show Answers | State: OFF";
+    }
+}
+
 function resetScore(){
     tot_test = 0;
     updateScore();
