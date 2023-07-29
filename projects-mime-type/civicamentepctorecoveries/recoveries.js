@@ -11,7 +11,7 @@ document.getElementById("scoreSetMod").value = 0;
 document.getElementById("shownQuestionMod").value = 1;
 document.getElementById("hiddenQuestionMod").value = 1;
     let mouse_position = {x: 0, y: 0};
-document.getElementById('overridebutton').innerHTML = "Override Next Function | State: OFF";
+document.getElementById('overridebutton').innerHTML = "Override Next Function | Status: OFF";
 window.addEventListener('mousemove', (mouse_event) => {
 mouse_position.x = mouse_event.clientX;
 mouse_position.y = mouse_event.clientY;
@@ -134,7 +134,7 @@ let answers_shown = false, generated_indicators = 0;
 function show_answer() {
     answers_shown = !answers_shown;
     if (answers_shown) {
-        document.getElementById("show_answer_btn").innerHTML = "Show Answers | State: ON";
+        document.getElementById("show_answer_btn").innerHTML = "Show Answers | Status: ON";
         generated_indicators = 0
         for(i=1; i<=nmax; i++){
             if (document.getElementById("d"+i+"-a").value >= 1) {
@@ -170,7 +170,7 @@ function show_answer() {
         for (let i = generated_indicators; i > 0; i--) {
             document.getElementById("correct_answer_indicator").remove();
         }
-        document.getElementById("show_answer_btn").innerHTML = "Show Answers | State: OFF";
+        document.getElementById("show_answer_btn").innerHTML = "Show Answers | Status: OFF";
     }
 }
 
@@ -186,9 +186,9 @@ function updateScore(){
 
 function updateNextOverride(){
 if (nextFunctionOverride){
-    document.getElementById('overridebutton').innerHTML = "Override Next Function | State: ON";
+    document.getElementById('overridebutton').innerHTML = "Override Next Function | Status: ON";
 }else{
-document.getElementById('overridebutton').innerHTML = "Override Next Function | State: OFF";
+document.getElementById('overridebutton').innerHTML = "Override Next Function | Status: OFF";
 }
 }
 
