@@ -137,28 +137,28 @@ function show_answer() {
         document.getElementById("show_answer_btn").innerHTML = "Show Answers | State: ON";
         generated_indicators = 0
         for(i=1; i<=nmax; i++){
-            if (document.getElementById("d"+i+"-a").innerHTML >= 1) {
+            if (document.getElementById("d"+i+"-a").value >= 1) {
                 var correct_answer_element = document.createElement("p");
                 correct_answer_element.innerHTML = "⮙ Correct Answer";
                 correct_answer_element.id = "correct_answer_indicator";
                 document.getElementById("d"+i+"-a").parentElement.appendChild(correct_answer_element);
                 generated_indicators++;
             };
-            if (document.getElementById("d"+i+"-b").innerHTML >= 1) {
+            if (document.getElementById("d"+i+"-b").value >= 1) {
                 var correct_answer_element = document.createElement("p");
                 correct_answer_element.innerHTML = "⮙ Correct Answer";
                 correct_answer_element.id = "correct_answer_indicator";
                 document.getElementById("d"+i+"-b").parentElement.appendChild(correct_answer_element);
                 generated_indicators++;
             };
-            if (document.getElementById("d"+i+"-c").innerHTML >= 1) {
+            if (document.getElementById("d"+i+"-c").value >= 1) {
                 var correct_answer_element = document.createElement("p");
                 correct_answer_element.innerHTML = "⮙ Correct Answer";
                 correct_answer_element.id = "correct_answer_indicator";
                 document.getElementById("d"+i+"-c").parentElement.appendChild(correct_answer_element);
                 generated_indicators++;
             };
-            if (document.getElementById("d"+i+"-d").innerHTML >= 1) {
+            if (document.getElementById("d"+i+"-d").value >= 1) {
                 var correct_answer_element = document.createElement("p");
                 correct_answer_element.innerHTML = "⮙ Correct Answer";
                 correct_answer_element.id = "correct_answer_indicator";
