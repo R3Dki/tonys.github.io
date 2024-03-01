@@ -1,6 +1,6 @@
 document.title = "CivicaMente Recoveries by R3Dki";
     document.getElementById("d1-a").checked = true;
-    next('1');
+    next(1);
     document.getElementById("d1-a").checked = false;
     document.getElementById('d1').style.display = 'block';
     document.getElementById('d2').style.display = 'none';
@@ -83,6 +83,7 @@ function show(n) {
     }
 
     function complete(score) {
+	next(1);
         tot_test = score;
         document.getElementById("d"+ nmax +"-a").checked = true;
         next(nmax);
@@ -126,8 +127,8 @@ function resetTest() {
 }
 
 function setScore(score){
-tot_test = score;
-    updateScore();
+	tot_test = score;
+	updateScore();
 }
 
 let answers_shown = false, generated_indicators = 0;
@@ -203,9 +204,9 @@ document.body.onmousemove = function() {
 
 next = function(nr) {
 if (nextFunctionOverride){
-console.log("Next Override enabled: form attempted to go to the next question of N°"+nr);
+console.log("Next Override enabled: form attempted to go to question: N°"+nr);
 }else{
-console.log("Next Override disabled: form moved to the next question of N°"+nr);
+console.log("Next Override disabled: form moved to question of N°"+nr);
 if(document.getElementById('d'+nr+'-a').checked == true){
 							tot_test += parseInt(document.getElementById('d'+nr+'-a').value);
 						}
@@ -220,7 +221,7 @@ if(document.getElementById('d'+nr+'-a').checked == true){
 						}
 						
 						//-----------------------------------------------
-						soglia_min = parseInt('8');
+						soglia_min = parseInt(0);
 						nmax = parseInt('10');
 						//-----------------------------------------------
 						
@@ -232,7 +233,7 @@ if(document.getElementById('d'+nr+'-a').checked == true){
 						}
 																			
 						nr_succ = parseInt(nr) + 1;
-						if(nr_succ == nmax+1)
+						if(nr_succ >= nmax+1)
 						{
 														
 								if(tot_test == nmax || (soglia_min > 0 && tot_test >= soglia_min)){
@@ -240,10 +241,10 @@ if(document.getElementById('d'+nr+'-a').checked == true){
 									document.getElementById('form-s').submit();
 								}else{
 									if(soglia_min > 0){
-																					alert('Hai risposto correttamente solo a '+tot_test+' domande su '+nmax+'.\nPer proseguire devi rispondere correttamente ad almeno '+soglia_min+' domande. Riprova');
-																			}else{
-																					alert('Hai risposto correttamente solo a '+tot_test+' domande su '+nmax+'.\nPer proseguire devi rispondere correttamente a tutte le domande. Riprova');	
-																			}
+										alert('Hai risposto correttamente solo a '+tot_test+' domande su '+nmax+'.\nPer proseguire devi rispondere correttamente ad almeno '+soglia_min+' domande. Riprova');
+									}else{
+										alert('Hai risposto correttamente solo a '+tot_test+' domande su '+nmax+'.\nPer proseguire devi rispondere correttamente a tutte le domande. Riprova');	
+									}
 									tot_test = 0;
 									for(i=1; i<=nmax; i++){
 										document.getElementById('d'+i+'-a').checked = false;
