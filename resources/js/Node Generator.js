@@ -3,43 +3,43 @@ request.open("GET", "./resources/js/config.json", false);
 request.send(null);
 var config = JSON.parse(request.responseText);
 
-let
-elementId = config.General[0].elementId,
-minAcceleration = config.General[1].minAcceleration,
-baseAcceleration = config.General[2].baseAcceleration,
-maxAcceleration = config.General[3].maxAcceleration,
-showWatermark = config.General[4].showWatermark,
-randomColorList = config.General[5].randomColorList.length,
-enableNodes = config.Nodes[0].enableNodes,
-nNodes = config.Nodes[1].nNodes,
-nodeColor = config.Nodes[2].nodeColor,
-nodeAlpha = config.Nodes[3].nodeAlpha,
-minRad = config.Nodes[4].minRad,
-maxRad = config.Nodes[5].maxRad,
-randomColorNodesMode = config.Nodes[6].randomColorNodesMode,
-randomCountNodes = config.Nodes[7].randomColorNodesIterations + 1,
-pulsatingNodeSize = config.Nodes[8].pulsatingNodeSize,
-minPulseSize = config.Nodes[9].minPulseSize,
-maxPulseSize = config.Nodes[10].maxPulseSize,
-enableDrawer = config.Drawer[0].enableDrawer,
-useExperimentalLineDrawer = config.Drawer[1].useExperimentalLineDrawer,
-polygonDrawer = config.Drawer[2].polygonDrawer,
-nodeLineDist = config.Drawer[3].nodeLineDist,
-lineWidth = config.Drawer[4].lineWidth,
-opacityDivisionFactor = config.Drawer[5].opacityDivisionFactor,
-lineColor = config.Drawer[6].lineColor,
-randomColorLinesMode = config.Drawer[7].randomColorLinesMode,
-randomColorLinesIterations = config.Drawer[8].randomColorLinesIterations,
-randomCountLines = config.Drawer[8].randomColorLinesIterations + 1,
-
-prevColorNodes,
-prevColorLines,
-distX,
-distY,
-min = 0,
-nodeCount = 1,
-maxY = window.innerHeight,
-maxX = window.innerWidth;
+let elementId = config.General[0].elementId,
+  minAcceleration = config.General[1].minAcceleration,
+  baseAcceleration = config.General[2].baseAcceleration,
+  maxAcceleration = config.General[3].maxAcceleration,
+  showWatermark = config.General[4].showWatermark,
+  randomColorList = config.General[5].randomColorList,
+  enableNodes = config.Nodes[0].enableNodes,
+  nNodes = config.Nodes[1].nNodes,
+  nodeColor = config.Nodes[2].nodeColor,
+  nodeAlpha = config.Nodes[3].nodeAlpha,
+  minRad = config.Nodes[4].minRad,
+  maxRad = config.Nodes[5].maxRad,
+  randomColorNodesMode = config.Nodes[6].randomColorNodesMode,
+  randomColorNodesIterations = config.Nodes[7].randomColorNodesIterations + 1,
+  pulsatingNodeSize = config.Nodes[8].pulsatingNodeSize,
+  minPulseSize = config.Nodes[9].minPulseSize,
+  maxPulseSize = config.Nodes[10].maxPulseSize,
+  psychoCrystalMode = config.Nodes[11].psychoCrystalMode,
+  enableDrawer = config.Drawer[0].enableDrawer,
+  useExperimentalLineDrawer = config.Drawer[1].useExperimentalLineDrawer,
+  polygonDrawer = config.Drawer[2].polygonDrawer,
+  nodeLineDist = config.Drawer[3].nodeLineDist,
+  lineWidth = config.Drawer[4].lineWidth,
+  opacityDivisionFactor = config.Drawer[5].opacityDivisionFactor,
+  lineColor = config.Drawer[6].lineColor,
+  randomColorLinesMode = config.Drawer[7].randomColorLinesMode,
+  randomColorLinesIterations = config.Drawer[8].randomColorLinesIterations,
+  randomCountLines = config.Drawer[8].randomColorLinesIterations + 1,
+  prevColorNodes,
+  prevColorLines,
+  randomCountNodes = 0,
+  distX,
+  distY,
+  min = 0,
+  nodeCount = 1,
+  maxY = window.innerHeight,
+  maxX = window.innerWidth;
 
 let nodeList = [];
 
@@ -56,9 +56,7 @@ async function RandomMode(params) {
     if (randomCountLines > randomColorLinesIterations) {
       prevColorLines =
         randomColorList[
-          Math.floor(
-            Math.random() * (randomColorList + 1)
-          )
+          Math.floor(Math.random() * (randomColorList.length + 1))
         ];
       ctx.strokeStyle = prevColorLines;
       randomCountLines = 0;
@@ -68,16 +66,13 @@ async function RandomMode(params) {
     ctx.strokeStyle = lineColor;
   }
 
-  if (randomColorNodesMode) {
+  if (randomColorNodesMode && !randomColorNodesEachNodeMode) {
     randomCountNodes++;
     if (randomCountNodes > randomColorNodesIterations) {
       prevColorNodes =
         randomColorList[
-          Math.floor(
-            Math.random() * (randomColorList + 1)
-          )
+          Math.floor(Math.random() * (randomColorList.length + 1))
         ];
-      ctx.fillStyle = prevColorNodes;
       randomCountNodes = 0;
     }
     ctx.fillStyle = prevColorNodes;
@@ -116,18 +111,10 @@ function Node() {
   this.x = Math.floor(Math.random() * (maxX - min + 1) + min);
   this.y = Math.floor(Math.random() * (maxY - min + 1) + min);
   this.accelerationX = Math.floor(
-    Math.random() *
-      (maxAcceleration -
-        minAcceleration +
-        1) +
-      minAcceleration
+    Math.random() * (maxAcceleration - minAcceleration + 1) + minAcceleration
   );
   this.accelerationY = Math.floor(
-    Math.random() *
-      (maxAcceleration -
-        minAcceleration +
-        1) +
-      minAcceleration
+    Math.random() * (maxAcceleration - minAcceleration + 1) + minAcceleration
   );
   if (
     this.accelerationX < baseAcceleration &&
@@ -143,10 +130,7 @@ function Node() {
   }
   this.radius = minRad;
   if (minRad != maxRad) {
-    this.radius = Math.floor(
-      Math.random() * (maxRad - minRad + 1) +
-        minRad
-    );
+    this.radius = Math.floor(Math.random() * (maxRad - minRad + 1) + minRad);
   }
   if (pulsatingNodeSize) {
     this.radius = minPulseSize + 1;
@@ -165,10 +149,7 @@ function Begin() {
 }
 
 async function DrawerAsyncExperimental(i) {
-  if (
-    useExperimentalLineDrawer &&
-    !polygonDrawer
-  ) {
+  if (useExperimentalLineDrawer && !polygonDrawer) {
     for (let j = i; j < nodeCount; j++) {
       distance = Math.sqrt(
         Math.pow(nodeList[j].x - nodeList[i].x, 2) +
@@ -185,16 +166,12 @@ async function DrawerAsyncExperimental(i) {
     for (let j = i; j < nodeCount; j++) {
       distX = nodeList[j].x - nodeList[i].x;
       distY = nodeList[j].y - nodeList[i].y;
-      if (
-        Math.abs(distX) <= nodeLineDist &&
-        Math.abs(distY) <= nodeLineDist
-      ) {
+      if (Math.abs(distX) <= nodeLineDist && Math.abs(distY) <= nodeLineDist) {
         ctx.moveTo(nodeList[j].x, nodeList[j].y);
         ctx.lineTo(nodeList[i].x, nodeList[i].y);
         ctx.globalAlpha =
-          opacityDivisionFactor /
-          (Math.abs(distX) + Math.abs(distY));
-        ctx.stroke();
+          opacityDivisionFactor / (Math.abs(distX) + Math.abs(distY));
+          ctx.stroke();
       }
     }
   } else {
@@ -245,6 +222,9 @@ function Renderer() {
     //Draw Circles were nodes are
     PulseNodes(i);
     NodeDrawAsync(i);
+    if (psychoCrystalMode) {
+      ctx.fillStyle = randomColorList[Math.floor(Math.random() * (randomColorList.length + 1))];
+    }
     ctx.fill();
   }
   requestAnimationFrame(Renderer);
