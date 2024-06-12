@@ -10,15 +10,16 @@
     "Nodes":[
         {"enableNodes":true},
         {"nNodes":50},
-        {"nodeColor":"#BF0000"},
+        {"nodeColor":"#FF0000"},
         {"nodeAlpha":1},
         {"minRad":3},
         {"maxRad":6},
-        {"randomColorNodesMode":true},
-        {"randomColorNodesIterations":"200"},
+        {"randomColorNodesMode":false},
+        {"randomColorNodesIterations":"20"},
         {"pulsatingNodeSize":false},
         {"minPulseSize":1},
-        {"maxPulseSize":5}
+        {"maxPulseSize":5},
+        {"psychoCrystalMode":false}
     ],
     "Drawer":[
         {"enableDrawer":true},
