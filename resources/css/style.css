@@ -56,7 +56,7 @@ center {
 }
 
 .name {
-    margin-bottom: -18px;
+    margin-bottom: -12px;
     font-family: 'Fira Code Retina';
     font-size: 100px;
     font-display: 100px;
@@ -64,7 +64,7 @@ center {
 
 .namehr {
     margin-top: 0px;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
     position: relative;
     width: 300px;
     height: 5px;
